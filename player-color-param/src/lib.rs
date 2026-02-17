@@ -1,4 +1,5 @@
 use std::fmt;
+use std::collections::HashMap;
 
 // [TODO] Make separate module for all structs to use.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -23,6 +24,14 @@ impl fmt::Display for Version {
 #[derive(Debug, Clone)]
 pub struct PlayerColorParam {
     pub version: Version,
+    pub entries: HashMap<EntryKey, RGB>,
+}
+
+#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+pub struct EntryKey {
+    pub character_id: String,
+    pub costume_index: u8,  // zero-indexed
+    pub alt_index: u8,      // zero-indexed
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
@@ -30,18 +39,4 @@ pub struct RGB {
     pub red: u8,
     pub green: u8,
     pub blue: u8,
-}
-
-#[derive(Debug, Clone)]
-pub struct Entry {
-    pub character_id: String,
-    pub costume_index: u8,
-    pub alt_index: u8,
-    pub color: RGB,
-}
-
-impl Entry {
-    pub fn key(&self) -> String {
-        format!("{}_{}_{}", self.character_id, self.costume_index, self.alt_index)
-    }
 }
