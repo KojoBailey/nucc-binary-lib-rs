@@ -1,10 +1,16 @@
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct RGB {
+    pub red: u8,
+    pub green: u8,
+    pub blue: u8,
+}
+
+#[derive(Debug, Clone)]
 pub struct PlayerColorParam {
-    character_id: String,
-    costume_index: u8,
-    alt_index: u8,
-    red: u8,
-    green: u8,
-    blue: u8,
+    pub character_id: String,
+    pub costume_index: u8,
+    pub alt_index: u8,
+    pub color: RGB,
 }
 
 impl PlayerColorParam {
