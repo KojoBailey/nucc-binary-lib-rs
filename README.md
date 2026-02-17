@@ -1,5 +1,10 @@
 # Rust NUCC Binary Library
-This library provides an abstract interface for CyberConnect2's custom data structures from their NUCC engine.
+This library provides an abstract interface for [CyberConnect2](https://jojomodding.miraheze.org/wiki/CyberConnect2)'s custom data structures from their [NUCC](https://jojomodding.miraheze.org/wiki/NUCC) engine.
+
+It is abstract in which it stores the data in the most logical manner, as opposed to mirroring how the structures are layed out as binary-encoded game data (which is inconsistent anyway). This way, it aims to set the foundation for which other libraries can build off of, adding support for serialisation and the like.
+
+> [!NOTE]
+> This library enforces PascalCase for struct names, so familiar titles like "messageInfo" are changed to "MessageInfo". Mind you, the casing of the original names weren't consistent to begin with anyway (e.g. `PlayerColorParam` in ASB and `playerColorParam` in EoH).
 
 The following structures are currently supported (this library enforces PascalCase):
 - PlayerColorParam
