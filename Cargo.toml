@@ -1,11 +1,12 @@
 [workspace]
 resolver = "2"
 members = [
+	"util/version",
 	"player-color-param",
 ]
 
 [workspace.dependencies]
-# If shared dependencies ever arise, add them here.
+version = { path = "util/version" }
 
 [workspace.package]
 edition = "2024"

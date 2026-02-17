@@ -5,3 +5,10 @@ version = 4
 [[package]]
 name = "nucc-player-color-param"
 version = "0.1.0"
+dependencies = [
+ "version",
+]
+
+[[package]]
+name = "version"
+version = "1.0.0"
