@@ -1,6 +1,13 @@
-[package]
-name = "nucc-binary-lib-rs"
-version = "0.1.0"
-edition = "2024"
+[workspace]
+resolver = "2"
+members = [
+	"player-color-param",
+]
 
-[dependencies]
+[workspace.dependencies]
+# If shared dependencies ever arise, add them here.
+
+[workspace.package]
+edition = "2024"
+license = "MPL-2.0"
+repository = "https://github.com/KojoBailey/nucc-binary-lib-rs"

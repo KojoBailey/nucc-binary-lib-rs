@@ -1,0 +1,10 @@
+[package]
+name = "nucc-player-color-param"
+version = "0.1.0"
+authors = ["Kojo Bailey"]
+description = "Abstracted interface for the PlayerColorParam data structure used across CyberConnect2 NUCC games."
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
