@@ -8,6 +8,10 @@ It is abstract in which it stores the data in the most logical manner, as oppose
 
 The following structures are currently supported (this library enforces PascalCase):
 - PlayerColorParam
+- MessageInfo
+
+> [!WARNING]
+> So far, these are just drafts, and have only been created with the JJBA CC2 games in mind. The other games may have differences that require additional changes.
 
 ## Usage
 This library is currently in its infancy, so no usage documentation will be created just yet, nor has it been uploaded to crates.io.
