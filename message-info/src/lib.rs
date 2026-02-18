@@ -22,6 +22,7 @@ impl Entry {
 
 #[derive(Debug, Clone)]
 pub enum Language {
+    // All officially supported languages in one game or another.
     English,
     Spanish,
     German,
