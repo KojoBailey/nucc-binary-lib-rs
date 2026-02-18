@@ -1,9 +1,7 @@
-use version::Version;
 use std::collections::HashMap;
 
 #[derive(Debug, Clone)]
 pub struct PlayerColorParam {
-    pub version: Version,
     pub entries: HashMap<EntryKey, RGB>,
 }
 
