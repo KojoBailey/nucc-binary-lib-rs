@@ -3,6 +3,7 @@ resolver = "2"
 members = [
 	"util/version",
 	"player-color-param",
+	"message-info",
 ]
 
 [workspace.dependencies]
