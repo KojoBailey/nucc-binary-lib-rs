@@ -1,8 +1,8 @@
-use std::collections::HashMap;
+pub use indexmap::IndexMap;
 
 #[derive(Debug, Clone)]
 pub struct PlayerColorParam {
-    pub entries: HashMap<EntryKey, RGB>,
+    pub entries: IndexMap<EntryKey, RGB>,
 }
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]

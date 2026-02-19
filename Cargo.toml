@@ -7,7 +7,7 @@ members = [
 ]
 
 [workspace.dependencies]
-version = { path = "util/version" }
+indexmap = "2.0"
 
 [workspace.package]
 edition = "2024"

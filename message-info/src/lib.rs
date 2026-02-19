@@ -1,9 +1,9 @@
-use std::collections::HashMap;
+pub use indexmap::IndexMap;
 
 #[derive(Debug, Clone)]
 pub struct MessageInfo {
     pub language: Language,
-    pub entries: HashMap<u64, Entry>,
+    pub entries: IndexMap<u64, Entry>,
 }
 
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
