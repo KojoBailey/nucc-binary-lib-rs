@@ -1,4 +1,5 @@
 pub use indexmap::IndexMap;
+use std::cmp::Ordering;
 
 #[derive(Debug, Clone)]
 pub struct PlayerColorParam {
@@ -17,6 +18,20 @@ pub struct RGB {
     pub red: u8,
     pub green: u8,
     pub blue: u8,
+}
+
+impl Ord for EntryKey {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.character_id.cmp(&other.character_id)
+            .then(self.costume_index.cmp(&other.costume_index))
+            .then(self.alt_index.cmp(&other.alt_index))
+    }
+}
+
+impl PartialOrd for EntryKey {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
 }
 
 impl RGB {
