@@ -18,3 +18,26 @@ pub struct RGB {
     pub green: u8,
     pub blue: u8,
 }
+
+impl RGB {
+    // Either "RRGGBB" or "#RRGGBB"
+    pub fn from_hex_str(s: &str) -> Option<Self> {
+        let s = s.strip_prefix('#').unwrap_or(s);
+        if s.len() != 6 {
+            return None;
+        }
+
+        let red = u8::from_str_radix(&s[0..2], 16).ok()?;
+        let green = u8::from_str_radix(&s[2..4], 16).ok()?;
+        let blue = u8::from_str_radix(&s[4..6], 16).ok()?;
+
+        Some(RGB { red, green, blue })
+    }
+
+    pub fn to_hex_str(&self, prepend_hashtag: bool) -> String {
+        format!("{}{:02X}{:02X}{:02X}",
+            if prepend_hashtag { "#" } else { "" },
+            self.red, self.green, self.blue
+        )
+    }
+}
