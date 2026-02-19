@@ -41,3 +41,32 @@ impl RGB {
         )
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn from_hex_str() {
+        let col = RGB::from_hex_str("0099FF").unwrap();
+        assert_eq!(col, RGB { red: 0x00, green: 0x99, blue: 0xFF });
+    }
+
+    #[test]
+    fn from_hex_str_with_hashtag() {
+        let col = RGB::from_hex_str("#FF0099").unwrap();
+        assert_eq!(col, RGB { red: 0xFF, green: 0x00, blue: 0x99 });
+    }
+
+    #[test]
+    fn to_hex_str() {
+        let rgb = RGB { red: 0x00, green: 0x99, blue: 0xFF };
+        assert_eq!(rgb.to_hex_str(false), "0099FF");
+    }
+
+    #[test]
+    fn to_hex_str_with_hashtag() {
+        let rgb = RGB { red: 0xFF, green: 0x00, blue: 0x99 };
+        assert_eq!(rgb.to_hex_str(true), "#FF0099");
+    }
+}
