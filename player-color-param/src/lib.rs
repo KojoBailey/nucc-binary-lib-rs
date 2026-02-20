@@ -6,6 +6,13 @@ pub struct PlayerColorParam {
     pub entries: IndexMap<EntryKey, RGB>,
 }
 
+impl PlayerColorParam {
+    // The "other" takes priority.
+    pub fn merge(&mut self, other: &Self) {
+        self.entries.extend(other.entries.iter().map(|(k, v)| (k.clone(), v.clone())));
+    }
+}
+
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct EntryKey {
     pub character_id: String,
