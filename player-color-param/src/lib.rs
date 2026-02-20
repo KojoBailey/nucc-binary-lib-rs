@@ -20,13 +20,6 @@ pub struct EntryKey {
     pub alt_index: u8,      // zero-indexed
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
-pub struct RGB {
-    pub red: u8,
-    pub green: u8,
-    pub blue: u8,
-}
-
 impl Ord for EntryKey {
     fn cmp(&self, other: &Self) -> Ordering {
         self.character_id.cmp(&other.character_id)
@@ -39,6 +32,13 @@ impl PartialOrd for EntryKey {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
     }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct RGB {
+    pub red: u8,
+    pub green: u8,
+    pub blue: u8,
 }
 
 impl RGB {
@@ -61,6 +61,10 @@ impl RGB {
             if prepend_hashtag { "#" } else { "" },
             self.red, self.green, self.blue
         )
+    }
+
+    pub fn to_u32(&self) -> u32 {
+        u32::from_be_bytes([self.red, self.green, self.blue, 0xFF])
     }
 }
 
@@ -90,5 +94,11 @@ mod tests {
     fn to_hex_str_with_hashtag() {
         let rgb = RGB { red: 0xFF, green: 0x00, blue: 0x99 };
         assert_eq!(rgb.to_hex_str(true), "#FF0099");
+    }
+
+    #[test]
+    fn to_u32() {
+        let rgb = RGB { red: 0x23, green: 0x00, blue: 0x99 };
+        assert_eq!(rgb.to_u32(), 0x230099FF);
     }
 }
