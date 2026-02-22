@@ -6,6 +6,14 @@ pub struct MessageInfo {
     pub entries: IndexMap<u64, Entry>,
 }
 
+impl MessageInfo {
+    // The "other" takes priority.
+    pub fn merge(&mut self, other: &Self) {
+        self.language = other.language.clone();
+        self.entries.extend(other.entries.iter().map(|(k, v)| (k.clone(), v.clone())));
+    }
+}
+
 #[derive(Debug, Clone, Hash, Eq, PartialEq)]
 pub struct Entry {
     pub hash_id: u64,
