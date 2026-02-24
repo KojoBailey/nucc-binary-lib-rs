@@ -2,9 +2,8 @@ mod hash;
 
 pub use hash::*;
 pub use indexmap::IndexMap;
-
-use std::fmt;
-use std::str::FromStr;
+pub use std::fmt;
+pub use std::str::FromStr;
 
 #[derive(Debug, Clone)]
 pub struct MessageInfo {
