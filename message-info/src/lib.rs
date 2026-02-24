@@ -4,6 +4,7 @@ pub use hash::*;
 pub use indexmap::IndexMap;
 
 use std::fmt;
+use std::str::FromStr;
 
 #[derive(Debug, Clone)]
 pub struct MessageInfo {
@@ -62,6 +63,25 @@ impl fmt::Display for Language {
             Language::ChineseSimplified  => write!(f, "ChineseSimplified"),
             Language::ChineseTraditional => write!(f, "ChineseTraditional"),
             Language::Other(custom)      => write!(f, "{}", custom),
+        }
+    }
+}
+
+impl FromStr for Language {
+    type Err = std::convert::Infallible;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        match s {
+            "English"            => Ok(Language::English),
+            "Spanish"            => Ok(Language::Spanish),
+            "German"             => Ok(Language::German),
+            "Italian"            => Ok(Language::Italian),
+            "French"             => Ok(Language::French),
+            "Japanese"           => Ok(Language::Japanese),
+            "Korean"             => Ok(Language::Korean),
+            "ChineseSimplified"  => Ok(Language::ChineseSimplified),
+            "ChineseTraditional" => Ok(Language::ChineseTraditional),
+            other                => Ok(Language::Other(other.to_string())),
         }
     }
 }
