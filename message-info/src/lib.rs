@@ -35,7 +35,7 @@ pub enum Reference {
     HashId(u32),
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Eq, PartialEq)]
 pub enum Language {
     // All officially supported languages in one game or another.
     English,
@@ -83,5 +83,22 @@ impl FromStr for Language {
             "ChineseTraditional" => Ok(Language::ChineseTraditional),
             other                => Ok(Language::Other(other.to_string())),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn language_to_string() {
+        assert_eq!(Language::English.to_string(), "English");
+        assert_eq!(Language::Other("Fante".to_string()).to_string(), "Fante");
+    }
+
+    #[test]
+    fn string_to_language() {
+        assert_eq!(Language::from_str("English").unwrap(), Language::English);
+        assert_eq!(Language::from_str("Irish").unwrap(), Language::Other("Irish".to_string()));
     }
 }
